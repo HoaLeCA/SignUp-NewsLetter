@@ -14,7 +14,7 @@ app.use(bodyParser.urlencoded({extended: true}))
 
 const port = process.env.PORT || 3000
 // when deploy to external server, the server will choose their own port number
-// so should change port
+// so should change to process.env.PORT.
 
 app.get("/", (req, res)=>{
 
@@ -49,7 +49,7 @@ app.post("/", (req, res) =>{
         method : "POST",
         auth: "hoale1:e1dc9343814e339b659226cd4caf7e69-us12"
     }
-    const request = https.request(url, options, (response)=>{
+    request = https.request(url, options, (response)=>{
         console.log(response.statusCode);
         if(response.statusCode === 200){
             res.sendFile(__dirname + "/success.html")
@@ -80,6 +80,3 @@ app.listen(port, () =>{
     console.log(`Server is running in ${port}`);
 })
 
-// API key for mailchim : e1dc9343814e339b659226cd4caf7e69-us12
-
-// list id: abcd69b23d
